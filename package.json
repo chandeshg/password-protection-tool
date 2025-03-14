@@ -1,0 +1,27 @@
+{
+  "name": "password-protection-tool",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD\r # Password Protection Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandeshg/password-protection-tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandeshg/password-protection-tool/issues"
+  },
+  "homepage": "https://github.com/chandeshg/password-protection-tool#readme",
+  "dependencies": {
+    "axios": "^1.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "sha.js": "^2.4.11"
+  }
+}
