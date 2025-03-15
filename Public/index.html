@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protection Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        input, button { margin: 10px 0; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Password Protection Tool</h1>
+    
+    <!-- Password Strength Checker -->
+    <h2>Check Password Strength</h2>
+    <input type="text" id="password" placeholder="Enter password" />
+    <button onclick="checkPasswordStrength()">Check Strength</button>
+    <p id="strengthResult"></p>
+    
+    <!-- Password Generator -->
+    <h2>Generate Random Password</h2>
+    <input type="number" id="passwordLength" value="12" placeholder="Length (default 12)" />
+    <button onclick="generatePassword()">Generate Password</button>
+    <p id="generatedPassword"></p>
+
+    <!-- Pwned Password Check -->
+    <h2>Check if Password is Breached (Have I Been Pwned)</h2>
+    <button onclick="checkPwnedPassword()">Check if Leaked</button>
+    <p id="pwnedResult"></p>
+
+    <script>
+        // Check password strength
+        async function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const res = await fetch(`http://localhost:3001/password-strength?password=${password}`);
+            const data = await res.json();
+            document.getElementById('strengthResult').innerHTML = `Score: ${data.score}<br>Feedback: ${data.feedback.suggestions.join(', ')}`;
+        }
+
+        // Generate random password
+        async function generatePassword() {
+            const length = document.getElementById('passwordLength').value;
+            const res = await fetch(`http://localhost:3001/generate-password?length=${length}`);
+            const data = await res.json();
+            document.getElementById('generatedPassword').innerHTML = `Generated Password: ${data.password}`;
+        }
+
+        // Check if password is pwned
+        async function checkPwnedPassword() {
+            const password = document.getElementById('password').value;
+            const res = await fetch(`http://localhost:3001/pwned?password=${password}`);
+            const data = await res.json();
+            document.getElementById('pwnedResult').innerHTML = data.isPwned ? 'This password has been pwned!' : 'This password is safe!';
+        }
+    </script>
+
+</body>
+</html>

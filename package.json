@@ -1,7 +1,7 @@
 {
   "name": "password-protection-tool",
   "version": "1.0.0",
-  "description": "<<<<<<< HEAD\r # Password Protection Tool",
+  "description": "Password Protection Tool",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,8 +20,11 @@
   "homepage": "https://github.com/chandeshg/password-protection-tool#readme",
   "dependencies": {
     "axios": "^1.8.3",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "sha.js": "^2.4.11"
+    "jsonwebtoken": "^9.0.2",
+    "sha.js": "^2.4.11",
+    "zxcvbn": "^4.4.2"
   }
 }

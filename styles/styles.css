@@ -1,21 +1,56 @@
 body {
-    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #007bff;
-}
-
-button {
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
     width: 100%;
 }
 
-#password-strength {
-    font-weight: bold;
+h1 {
+    font-size: 24px;
+    color: #333;
 }
 
-#pwned-status {
-    font-weight: bold;
+.strength-checker {
+    margin: 20px 0;
+}
+
+input[type="password"] {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+#strengthResult {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
 }
