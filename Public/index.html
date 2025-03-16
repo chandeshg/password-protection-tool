@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Protection Tool</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         h1 { color: #333; }
         input, button { margin: 10px 0; padding: 10px; }
     </style>
 </head>
-<body>
+<body class="container">
 
-    <h1>Password Protection Tool</h1>
+    <h1 class="text-center my-4">Password Protection Tool</h1>
     
     <!-- Password Strength Checker -->
-    <h2>Check Password Strength</h2>
-    <input type="text" id="password" placeholder="Enter password" />
-    <button onclick="checkPasswordStrength()">Check Strength</button>
-    <p id="strengthResult"></p>
+    <div class="mb-4">
+        <h2>Check Password Strength</h2>
+        <div class="input-group mb-3">
+            <input type="text" id="password" class="form-control" placeholder="Enter password" />
+            <button class="btn btn-primary" onclick="checkPasswordStrength()">Check Strength</button>
+        </div>
+        <p id="strengthResult" class="alert alert-info"></p>
+    </div>
     
     <!-- Password Generator -->
-    <h2>Generate Random Password</h2>
-    <input type="number" id="passwordLength" value="12" placeholder="Length (default 12)" />
-    <button onclick="generatePassword()">Generate Password</button>
-    <p id="generatedPassword"></p>
+    <div class="mb-4">
+        <h2>Generate Random Password</h2>
+        <div class="input-group mb-3">
+            <input type="number" id="passwordLength" class="form-control" value="12" placeholder="Length (default 12)" />
+            <button class="btn btn-primary" onclick="generatePassword()">Generate Password</button>
+        </div>
+        <p id="generatedPassword" class="alert alert-info"></p>
+    </div>
 
     <!-- Pwned Password Check -->
-    <h2>Check if Password is Breached (Have I Been Pwned)</h2>
-    <button onclick="checkPwnedPassword()">Check if Leaked</button>
-    <p id="pwnedResult"></p>
+    <div class="mb-4">
+        <h2>Check if Password is Breached (Have I Been Pwned)</h2>
+        <button class="btn btn-danger" onclick="checkPwnedPassword()">Check if Leaked</button>
+        <p id="pwnedResult" class="alert alert-warning mt-3"></p>
+    </div>
 
     <script>
         // Check password strength
