@@ -3,10 +3,21 @@ const zxcvbn = require('zxcvbn');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = 3001;
+
 app.use(express.json());
-app.use(express.static('public')); // Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
+app.use(express.urlencoded({ extended: true })); // Middleware to parse JSON and form data
+app.use(bodyParser.urlencoded({ extended: true })); // Middleware to parse form data
+
+// Default route to serve login.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
 
 // Password Strength Checker Route
 app.get('/password-strength', (req, res) => {
@@ -66,7 +77,37 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// Route to serve the login page
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+// Route to handle user creation
+app.post('/create-user', (req, res) => {
+    const { username, password } = req.body;
+    // Logic to save the user (e.g., to a database) goes here
+    console.log(`User created: ${username}`);
+    res.redirect('/'); // Redirect to the index page
+});
+
+// Route to handle login form submission
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Basic authentication logic (replace with real validation)
+    if (username === 'admin' && password === 'password') {
+        res.redirect('/index');
+    } else {
+        res.send('Invalid credentials. Please <a href="/">try again</a>.');
+    }
+});
+
+// Route to serve index page
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Start the server on port 3001
-app.listen(3001, () => {
-    console.log('Server is running on http://localhost:3001');
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
